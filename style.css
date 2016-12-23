@@ -116,7 +116,7 @@ body {
 .add {
     padding: 14px;
     border-bottom: 1px solid #e7e7e7;
-    background-color: #f7f7f7;
+      background-color: rgb(241, 241, 241);
 }
 
 .add__container {
@@ -153,9 +153,12 @@ body {
 .add__value { width: 100px;}
 
 .add__btn {
-    font-size: 35px;
-    background: none;
-    border: none;
+    font-family: 'Lato';
+    font-size: 18px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 12px;
     color: #28B9B5;
     cursor: pointer;
     display: inline-block;
@@ -248,9 +251,11 @@ h2 {
 }
 
 .item__delete--btn {
-    font-size: 22px;
+    font-size: 18px;
     background: none;
-    border: none;
+    border: 1px solid;
+    border-radius: 100%;
+    padding: 2px 4px;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
@@ -275,4 +280,3 @@ h2 {
 
 .unpaid .item__percentage { box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1); }
 .unpaid:hover .item__description { font-weight: 900; }
-
