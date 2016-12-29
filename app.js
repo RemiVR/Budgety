@@ -196,7 +196,6 @@
       dec = numSplit[1];
 
       return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
-
     };
 
     var nodeListForEach = function(list, callback) {
@@ -218,11 +217,24 @@
 
         if (type === 'inc') {
           element = DOMstrings.incomeContainer;
-          html = '<div class="item clearfix" id="inc-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn">&#10005</button></div></div></div>';
+          html = '<div class="item clearfix" id="inc-%id%">' +
+            '<div class="item__description">%description%</div>' +
+              '<div class="right clearfix">' +
+                '<div class="item__value">%value%</div>' +
+                '<div class="item__delete"><button class="item__delete--btn">&#10005</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
         } else if (type === 'exp') {
           element = DOMstrings.expensesContainer;
-
-          html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn">&#10005</button></div></div></div>';
+          html = '<div class="item clearfix" id="exp-%id%">' +
+                  '<div class="item__description">%description%</div>' +
+                    '<div class="right clearfix">' +
+                      '<div class="item__value">%value%</div>' +
+                      '<div class="item__delete"><button class="item__delete--btn">&#10005</button></div>' +
+                      '<div class="item__percentage">21%</div>' +
+                  '</div>' +
+                '</div>';
         }
 
         newHtml = html.replace('%id%', obj.id);
@@ -259,7 +271,7 @@
         document.querySelector(DOMstrings.expensesLabel).textContent = formatNumber(obj.totalExp, 'exp');
 
         if (obj.percentage > 0) {
-          document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage;
+          document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + ' %';
         } else {
           document.querySelector(DOMstrings.percentageLabel).textContent = '---';
         }
@@ -270,12 +282,11 @@
 
         nodeListForEach(fields, function(current, index) {
           if (percentages[index] > 0) {
-            current.textContent = percentages[index] + '%';
+            current.textContent = percentages[index] + ' %';
           } else {
             current.textContent = '---';
           }
         });
-
       },
 
       displayDate: function() {
@@ -284,7 +295,6 @@
         now = new Date();
 
         months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 
         month = now.getMonth();
         year = now.getFullYear();
@@ -347,7 +357,6 @@
         var percentages = budgetCtrl.getPercentages();
         // 3 update ui with new percentages
         UICtrl.displayPercentages(percentages);
-        console.log(percentages);
       };
 
         var ctrlAddItem = function() {
